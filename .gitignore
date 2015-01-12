@@ -1,0 +1,13 @@
+*~
+*.cache
+*.DS_Store
+*.a
+*.o
+*.class
+*.pyc
+*.egg
+*.vagrant
+*#*
+*.md5
+*.tmp
+*.swp
