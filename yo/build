@@ -1,0 +1,7 @@
+#!/bin/bash
+
+. "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/helper
+
+echo "Building image '$(image_name)'"
+docker build -t "$(image_name)" "$(script_dir)"
+

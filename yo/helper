@@ -1,0 +1,41 @@
+
+if [ "$0" = "$BASH_SOURCE" ]; then
+ echo "This file must be sourced not run"
+ exit 1
+fi
+
+#auto generated usage message from getopts case block
+usage() {
+    cat<<EOF
+Usage: $0 [options]
+
+$(sed -n '1,/^[^#]/ {s/^# *description[: ]*//pI}' $0)
+options:
+$(sed -n '/^#OPTIONS START/,/#OPTIONS END/ {s/ *\([^)]\+\))[^#]\+#\(.*\)/\1\t: \2/p}' $0)
+EOF
+}
+
+#prints the path of this script
+script_dir() {
+ echo "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+}
+
+
+#prints the full and canonical path of the given file/dir/link
+fullpath() {
+    local path="$1"
+    if [[ -d "$path" ]]; then
+        echo "$(cd "$path"; pwd)"
+    else
+        echo "$(cd $(dirname "$path"); pwd)/$(basename "$path")"
+    fi
+}
+
+#prints the docker image name (at this time it's the same as the directory name where this file is placed)
+image_name() {
+    echo ${1:-"$(basename $(script_dir))"}
+}
+
+user_opts() {
+    echo "-e DOCKER_USER_UID=$(id -u) -e DOCKER_USER_NAME=$(whoami) -e DOCKER_USER_GID=$(id -g) -e DOCKER_USER_GROUP_NAME=$(id -gn) -e DOCKER_USER_HOME=$HOME -v $HOME:$HOME"
+}

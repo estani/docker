@@ -1,0 +1,22 @@
+#!/bin/bash
+
+. "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/helper
+[[ "$image" ]] || image="$(image_name)"
+
+#OPTIONS START
+while getopts 'ph' opt; do
+    case $opt in
+        p) preserve=1;;     #preserve container (default is to remove it when finished)
+        h) usage; exit 0;;  #show this help
+    esac
+done
+shift $((OPTIND-1))
+#OPTIONS END
+
+((preserve)) || options="$options --rm"
+echo "getting a container into '$image' $(((preserve)) && echo '(preserving container)')"
+if [[ "$@" ]]; then
+    docker run $options -ti $(user_opts) -v "$PWD:/data" "$image" "$@"
+else
+    docker run $options -ti $(user_opts) -v "$PWD:/data" "$image" /bin/bash
+fi

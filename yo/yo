@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+[[ "$image" ]] || image="$(basename $SCRIPT_DIR)"
+
+echo "Building image '$image'"
+docker build -t "$image" "$SCRIPT_DIR"
+
