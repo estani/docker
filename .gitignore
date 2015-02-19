@@ -11,3 +11,4 @@
 *.md5
 *.tmp
 *.swp
+solr/data/*
