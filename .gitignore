@@ -11,4 +11,4 @@
 *.md5
 *.tmp
 *.swp
-solr/data/*
+solr/solr_data/cfn365/data/*
