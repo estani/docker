@@ -1,0 +1,158 @@
+<dataConfig>
+        <dataSource jndiName="java:comp/env/jdbc/365FarmNet-Solr" user="" password="" readOnly="true" autoCommit="false" transactionIsolation="TRANSACTION_READ_COMMITTED" holdability="CLOSE_CURSORS_AT_COMMIT"/>
+
+    <document>
+      	<entity name="field"
+          	query="select * from field where field.deleted=false"
+			deltaImportQuery="select * from field where field.id='${dih.delta.id}'"
+            deltaQuery="select field.id from field where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select field.id from field where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="field" />
+        </entity>
+      	<entity name="machine"
+          	query="select * from machine where machine.deleted=false"
+			deltaImportQuery="select * from machine where machine.id='${dih.delta.id}'"
+            deltaQuery="select machine.id from machine where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select machine.id from machine where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="machine" />
+        </entity>
+      	<entity name="person"
+          	query="select * from person where person.deleted=false"
+			deltaImportQuery="select * from person where person.id='${dih.delta.id}'"
+            deltaQuery="select person.id from person where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select person.id from person where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="person" />
+        </entity>
+      	<entity name="service"
+          	query="select * from service where service.deleted=false"
+			deltaImportQuery="select * from service where service.id='${dih.delta.id}'"
+            deltaQuery="select service.id from service where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select service.id from service where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="service" />
+        </entity>
+      	<entity name="contact"
+          	query="select * from contact where contact.deleted=false"
+			deltaImportQuery="select * from contact where contact.id='${dih.delta.id}'"
+            deltaQuery="select contact.id from contact where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select contact.id from contact where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="contact" />
+        </entity>
+      	<entity name="agent"
+          	query="select * from agent where agent.deleted=false"
+			deltaImportQuery="select * from agent where agent.id='${dih.delta.id}'"
+            deltaQuery="select agent.id from agent where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select agent.id from agent where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="agent" />
+        </entity>
+      	<entity name="fertilizer"
+          	query="select * from fertilizer where fertilizer.deleted=false"
+			deltaImportQuery="select * from fertilizer where fertilizer.id='${dih.delta.id}'"
+            deltaQuery="select fertilizer.id from fertilizer where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select fertilizer.id from fertilizer where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="fertilizer" />
+        </entity>
+      	<entity name="forage"
+          	query="select * from forage where forage.deleted=false"
+			deltaImportQuery="select * from forage where forage.id='${dih.delta.id}'"
+            deltaQuery="select forage.id from forage where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select forage.id from forage where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="forage" />
+        </entity>
+      	<entity name="operatingSupply"
+          	query="select * from operatingSupply where operatingSupply.deleted=false"
+			deltaImportQuery="select * from operatingSupply where operatingSupply.id='${dih.delta.id}'"
+            deltaQuery="select operatingSupply.id from operatingSupply where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select operatingSupply.id from operatingSupply where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="operatingSupply" />
+        </entity>
+      	<entity name="plantProtectant"
+          	query="select * from plantProtectant left join sysPlantProtectant on (sysPlantProtectant_id = sysPlantProtectant.id) where plantProtectant.deleted=false"
+			deltaImportQuery="select * from plantProtectant left join sysPlantProtectant on (sysPlantProtectant_id = sysPlantProtectant.id) where plantProtectant.id='${dih.delta.id}'"
+            deltaQuery="select plantProtectant.id from plantProtectant where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select plantProtectant.id from plantProtectant where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="plantProtectant" />
+          	<field column="sysPlantProtectant.tradename" name="tradeName" />
+        </entity>
+      	<entity name="seed"
+          	query="select * from seed left join sysSeed on (sysSeed_id = sysSeed.id) where seed.deleted=false"
+			deltaImportQuery="select * from seed left join sysSeed on (sysSeed_id = sysSeed.id) where seed.id='${dih.delta.id}'"
+            deltaQuery="select seed.id from seed where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select seed.id from seed where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="seed" />
+          	<field column="sysSeed.officialid" name="officialId" />
+        </entity>
+      	<entity name="cropSequence"
+          	query="select * from cropSequence where cropSequence.deleted=false"
+			deltaImportQuery="select * from cropSequence where cropSequence.id='${dih.delta.id}'"
+            deltaQuery="select cropSequence.id from cropSequence where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select cropSequence.id from cropSequence where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="cropSequence" />
+        </entity>
+      	<entity name="sysAdressBook"
+          	query="select * from sysAdressBook where sysAdressBook.deleted=false"
+			deltaImportQuery="select * from sysAdressBook where sysAdressBook.id='${dih.delta.id}'"
+            deltaQuery="select sysAdressBook.id from sysAdressBook where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select sysAdressBook.id from sysAdressBook where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"
+            transformer="TemplateTransformer">
+          	<field column="context" template="core" /><!-- Stammdaten -->
+         	<field column="type" template="sysAdressBook" />
+        </entity>
+      
+		<entity name="operation"
+			query="select * from operation where deleted = false"
+			deltaImportQuery="select * from operation where operation.id='${dih.delta.id}'"
+            deltaQuery="select id from operation where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=false"
+          	deletedPkQuery="select id from operation where (changedat &gt; timestamp '${dih.last_index_time}' - interval '1 day' or createdat &gt; timestamp '${dih.last_index_time}' - interval '1 day') and deleted=true"			
+			transformer="TemplateTransformer">
+          	<!-- field with same names omitted -->
+          	<field column="context" template="operation" />
+			
+			<field column="templatename" name="name"/>
+			<field column="activityname" name="icons"/>
+			<field column="date" name="fromDate" />
+			
+			<entity name="asset" query="select asset_id, asset_type from operationassetdetail where operation_id='${operation.id}'">
+				<entity name="assetWithName" query="select CONCAT('${asset.asset_type}', ';', '${asset.asset_id}', ';', name) as asset from ${asset.asset_type} where id = '${asset.asset_id}'" />
+			</entity>				
+			<entity name="product" query="select harvesttype as product from operationproductdetail where operation_id='${operation.id}'"/>
+			<entity name="resource" query="select resource_id, resource_type from operationresourcedetail where operation_id='${operation.id}'">
+				<entity name="resourceWithName" query="select CONCAT('${resource.resource_type}', ';', '${resource.resource_id}', ';', name) as resource from ${resource.resource_type} where id = '${resource.resource_id}'" />
+			</entity>
+			<entity name="supply" query="select supply_id, supply_type from operationsupplydetail where operation_id='${operation.id}' and supply_type IN ('Fertilizer', 'Operatingsupply')">
+				<entity name="supplyWithName" query="select CONCAT('${supply.supply_type}', ';', '${supply.supply_id}', ';', name) as supply from ${supply.supply_type} where id = '${supply.supply_id}'" />
+			</entity>
+			<entity name="supply" query="select supply_id, supply_type from operationsupplydetail where operation_id='${operation.id}' and supply_type = 'Seed'">
+				<entity name="seed" query="select sysseed_id from seed where id = '${supply.supply_id}'">
+					<entity name="sysSeed" query="select sysculture_id from sysseed where id = '${seed.sysseed_id}'">
+						<entity name="sysCulture" query="select CONCAT('${supply.supply_type}', ';', '${supply.supply_id}', ';', name) as supply from sysculture where id = '${sysSeed.sysculture_id}'"/>
+					</entity>
+				</entity>
+			</entity>
+			<!-- TODO: Other supplies without direct names -->
+		</entity>   
+    </document>
+</dataConfig>
